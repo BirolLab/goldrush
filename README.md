@@ -1,8 +1,8 @@
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/bcgsc/goldrush)
-[![Downloads](https://img.shields.io/github/downloads/bcgsc/goldrush/total?logo=github)](https://github.com/bcgsc/goldrush/releases)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/BirolLab/goldrush)
+[![Downloads](https://img.shields.io/github/downloads/BirolLab/goldrush/total?logo=github)](https://github.com/BirolLab/goldrush/releases)
 ![Conda](https://img.shields.io/conda/dn/bioconda/goldrush?label=Conda)
 
-![Logo](https://github.com/bcgsc/GoldRush/blob/main/img/GoldRush-logo.png)
+![Logo](https://github.com/BirolLab/GoldRush/blob/main/img/GoldRush-logo.png)
 
 # GoldRush: memory-efficient _de novo_ assembly of long reads
 
@@ -12,10 +12,10 @@ GoldRush iterates through the input long reads to produce a "golden path" of rea
 
 ### General steps in the algorithm:
 1. **GoldPath** (aka GoldRush-Path): selecting the golden path reads
-2. **[GoldPolish](https://github.com/bcgsc/goldpolish)** (aka GoldRush-Edit): polishing the genome
-3. **[Tigmint-long](https://github.com/bcgsc/tigmint)**: correcting the genome
-4. **[GoldChain](https://github.com/bcgsc/ntlink)** (aka GoldRush-Link): scaffolding the genome
-5. **[GoldPolish-Target](https://github.com/bcgsc/goldpolish)**: targeted polishing of the genome
+2. **[GoldPolish](https://github.com/BirolLab/goldpolish)** (aka GoldRush-Edit): polishing the genome
+3. **[Tigmint-long](https://github.com/BirolLab/tigmint)**: correcting the genome
+4. **[GoldChain](https://github.com/BirolLab/ntlink)** (aka GoldRush-Link): scaffolding the genome
+5. **[GoldPolish-Target](https://github.com/BirolLab/goldpolish)**: targeted polishing of the genome
 
 
 ## Credits
@@ -106,7 +106,7 @@ GoldRush command:
 goldrush run reads=long_reads G=3e9
 ```
 
-**For more information about the GoldRush algorithm and tips for running GoldRush see our [wiki](https://github.com/bcgsc/goldrush/wiki)** 
+**For more information about the GoldRush algorithm and tips for running GoldRush see our [wiki](https://github.com/BirolLab/goldrush/wiki)** 
 
 # System Requirements
 
@@ -139,9 +139,9 @@ GoldRush has been tested on *Linux* operating systems (centOS7, ubuntu-20.04)
  * [boost](https://www.boost.org/doc/libs/1_61_0/more/getting_started/unix-variants.html)
  * [libdivsufsort](https://github.com/y-256/libdivsufsort)
  * [sparsehash](https://github.com/sparsehash/sparsehash)
- * [btllib 1.6.2+](https://github.com/bcgsc/btllib)
- * [Tigmint 1.2.6+](https://github.com/bcgsc/tigmint)
- * [ntLink 1.3.3+](https://github.com/bcgsc/ntlink)
+ * [btllib 1.6.2+](https://github.com/BirolLab/btllib)
+ * [Tigmint 1.2.6+](https://github.com/BirolLab/tigmint)
+ * [ntLink 1.3.3+](https://github.com/BirolLab/ntlink)
  * [minimap2](https://github.com/lh3/minimap2)
  * [snakemake](https://github.com/snakemake/snakemake)
  * [intervaltree](https://github.com/chaimleib/intervaltree) 
@@ -156,7 +156,7 @@ conda install -c bioconda -c conda-forge goldrush
 
 #### Github repository main branch
  ```
-  git clone https://github.com/bcgsc/goldrush.git
+  git clone https://github.com/BirolLab/goldrush.git
   cd goldrush
   git submodule init
   git submodule update
