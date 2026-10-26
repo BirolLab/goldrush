@@ -13,8 +13,10 @@ polished_infix=$(polisher)-polished
 # ntlink or minimap2
 polisher_mapper=minimap2
 
-# Shared memory location for GoldPolish
-shared_mem=/dev/shm
+# Shared memory location for GoldPolish. Left empty on systems without /dev/shm
+# (e.g. macOS); polishing then runs in the working directory, as GoldPolish
+# itself would.
+shared_mem=$(if $(wildcard /dev/shm),/dev/shm,)
 
 # ntlink mapping parameter (used if polisher_mapper=ntlink)
 polish_k=32
@@ -120,6 +122,9 @@ time=
 else
 ifneq ($(shell command -v gtime),)
 time=command gtime -v -o $@.time
+else ifeq ($(shell uname -s),Darwin)
+# macOS time has no -v; -l reports the same run time and peak memory
+time=command /usr/bin/time -l -o $@.time
 else
 time=command time -v -o $@.time
 endif
@@ -191,7 +196,7 @@ help:
 	@echo "	rounds			number of rounds of ntLink [$(rounds)]"
 	@echo ""
 	@echo "	GoldPolish options:"
-	@echo "	shared_mem		Shared memory path where polishing occurs [/dev/shm] "
+	@echo "	shared_mem		Shared memory path where polishing occurs [/dev/shm, or the working directory if /dev/shm does not exist] "
 	@echo ""
 	@echo "Notes:"
 	@echo "	- GoldRush-Path generates silver paths before generating the golden path"
@@ -264,7 +269,7 @@ endif
 	echo "Done GoldRush-Path + $(polisher_logs)! $(polisher_logs) polished golden path can be found in: $@"
 
 %.goldpolish-polished.fa: %.fa $(long_reads)
-	$(time) $(set_ulimit) goldpolish $(goldpolish_opts) -t$(t) -m$(shared_mem) $< $(long_reads) $@
+	$(time) $(set_ulimit) goldpolish $(goldpolish_opts) -t$(t) -m$(or $(shared_mem),$(CURDIR)) $< $(long_reads) $@
 	echo "Done GoldRush-Path + $(polisher_logs)! $(polisher_logs) polished golden path can be found in: $@"
 
 # Run racon
