@@ -160,7 +160,7 @@ conda install -c bioconda -c conda-forge goldrush
   cd goldrush
   git submodule init
   git submodule update
-  meson --prefix /path/to/install build
+  meson setup build --buildtype release --prefix /path/to/install
   cd build
   ninja install
  ```
@@ -169,7 +169,7 @@ conda install -c bioconda -c conda-forge goldrush
  ```
   tar -xf goldrush-x.y.z.tar.xz
   cd goldrush-x.y.z
-  meson --prefix /path/to/install build
+  meson setup build --buildtype release --prefix /path/to/install
   cd build
   ninja install
  ```
